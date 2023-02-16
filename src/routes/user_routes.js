@@ -1,8 +1,8 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 // GET request for creating User.
-router.get("/user/create", (req, res) => {
+router.get("/create", (req, res, next) => {
   res.send("NOT IMPLEMENTED: User create GET");
 });
 
