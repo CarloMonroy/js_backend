@@ -25,3 +25,5 @@
 2023-02-16 12:40:47:4047 [35mhttp[39m: [35m::1 GET /test 500 1433 - 0.862 ms[39m
 [35m[39m
 2023-02-16 12:43:37:4337 [32minfo[39m: [32mServer started on port 3000[39m
+2023-02-16 12:49:27:4927 [32minfo[39m: [32mServer started on port 3000[39m
+2023-02-16 12:49:40:4940 [31merror[39m: [31merror is not defined[39m
