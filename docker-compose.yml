@@ -7,3 +7,14 @@ services:
       - "7080:3000"
     volumes:
       - .:/src/backend
+
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+    command: --auth
