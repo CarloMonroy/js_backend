@@ -11,10 +11,11 @@ services:
   mongodb:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
     volumes:
       - ./data/db:/data/db
+      - ./mongod.conf:/etc/mongod.conf
     ports:
       - "27017:27017"
-    command: --auth
+    command: --config /etc/mongod.conf
