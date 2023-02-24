@@ -12,16 +12,6 @@ dontenv.config();
 const app = express();
 
 app.use(morganMiddleware);
-app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 // Add Routes
