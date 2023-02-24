@@ -2,8 +2,6 @@ const express = require("express");
 const morganMiddleware = require("./middlewares/morgan.middleware");
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
-const session = require("express-session");
-const passport = require("passport");
 const bodyparser = require("body-parser");
 const dontenv = require("dotenv");
 
