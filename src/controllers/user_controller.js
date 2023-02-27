@@ -9,28 +9,40 @@ class userController extends base_controller {
   }
 
   async registerUser(req, res) {
-    const user = new User(
-      {
-        name: req.body.name,
+    try {
+      const user = await User.findOne({
         email: req.body.email,
-        password: await bcrypt.hash(req.body.password, 10),
-      },
-      (err, user) => {
-        if (err) {
-          logger.error(err);
-          res.status(418).send("Unable to register user");
-        }
-      }
-    );
-
-    user.save((err, user) => {
-      if (err) {
-        logger.error(err);
-        res.status(418).send("Unable to register user");
+      });
+      if (user) {
+        res.status(418).send("User already exists");
       } else {
-        res.send("user created");
+        const user = new User(
+          {
+            name: req.body.name,
+            email: req.body.email,
+            password: await bcrypt.hash(req.body.password, 10),
+          },
+          (err, user) => {
+            if (err) {
+              logger.error(err);
+              res.status(418).send("Unable to register user");
+            }
+          }
+        );
+
+        user.save((err, user) => {
+          if (err) {
+            logger.error(err);
+            res.status(418).send("Unable to register user");
+          } else {
+            res.send("user created");
+          }
+        });
       }
-    });
+    } catch (err) {
+      logger.error(err);
+      res.status(500).send();
+    }
   }
 
   getAllUsers(req, res) {
