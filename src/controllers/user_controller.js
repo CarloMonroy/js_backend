@@ -62,7 +62,9 @@ class userController extends base_controller {
 
     try {
       const match = await bcrypt.compare(req.body.password, user.password);
-      const accessToken = jwt.sign(user.toJSON(), process.env.SECRET_JWT);
+      const accessToken = jwt.sign(user.toJSON(), process.env.SECRET_JWT, {
+        expiresIn: "3d",
+      });
       if (match) {
         res.json({
           accessToken,
