@@ -3,7 +3,11 @@ const morganMiddleware = require("./middlewares/morgan.middleware");
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
+const jsonwebtoken = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const dontenv = require("dotenv");
+
+const SECRET_JWT = process.env.SECRET_JWT;
 
 dontenv.config();
 
